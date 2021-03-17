@@ -1,0 +1,709 @@
+{
+    "swagger":"2.0",
+    "info":{
+        "version": "1.0.0",
+        "title": "API Monitor",
+        "description": "Flymonitor documentation",
+        "licence":{
+            "name":"MIT",
+            "url":"https://flybyte.com.br"
+        }
+    },
+    "paths":
+    {
+        "/admin/registerclients":{
+            "post":
+            {
+                "tags":["Admin Calls"],
+                "summary": "Add new client",
+                "description":"call responsible for adding a new customer",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "header",
+                    "name":"TOKEN_USER",
+                    "description": "Bearer Token",
+                    "required": true
+                },
+                {
+                    "in": "body",
+                    "name":"userData",
+                    "description": false,
+                    "required": true,
+                    "properties":
+                    {
+                        "emailAdmin":{"type":"string"},
+                        "nomeClient:":{"type":"string"},
+                        "CNPJouCPF":{"type":"integer"},
+                        "sobreNomeClient":{"type":"string"},
+                        "endereco":{"type":"string"},
+                        "cidade":{"type":"string"},
+                        "estado":{"type":"string"},
+                        "cep":{"type":"integer"},
+                        "usellevel":{"type":"string"}
+                    }              
+                }
+            ]
+        },
+        "/admin/registercam":{
+            "post":
+            {
+                "tags":["Admin Calls"],
+                "summary": "Add new camera",
+                "description":"call responsible for adding a new camera in the admin and client",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "header",
+                    "name":"TOKEN_USER",
+                    "description": "Bearer Token",
+                    "required": true
+                },
+                {
+                    "in": "body",
+                    "name":"userData",
+                    "description": false,
+                    "required": true,
+                    "properties":
+                    {
+                        "emailAdmin":{"type":"string"},
+                        "nomeClient:":{"type":"string"},
+                        "nomeCamera":{"type":"string"},
+                        "descricao":{"type":"string"},
+                        "RTSP":{"type":"string"}
+                    }              
+                }
+            ]
+        },
+        "/admin/consultaCAM":{
+            "post":
+            {
+                "tags":["Admin Calls"],
+                "summary": "Consult a camera",
+                "description":"Call responsible for consulting all cameras registered by the admin",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "header",
+                    "name":"TOKEN_USER",
+                    "description": "Bearer Token",
+                    "required": true
+                },
+                {
+                    "in": "body",
+                    "name":"userData",
+                    "description": false,
+                    "required": true,
+                    "properties":
+                    {
+                        "email":{"type":"string"}
+                    }              
+                }
+            ]
+        },
+        "/admin/listclients":{
+            "post":
+            {
+                "tags":["Admin Calls"],
+                "summary": "List client at admin",
+                "description":"Call responsible for consulting all cameras registered by the admin",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "header",
+                    "name":"TOKEN_USER",
+                    "description": "Bearer Token",
+                    "required": true
+                },
+                {
+                    "in": "body",
+                    "name":"userData",
+                    "description": false,
+                    "required": true,
+                    "properties":
+                    {
+                        "emailAdmin":{"type":"string"}
+                    }              
+                }
+            ]
+        },
+        "/admin/profileclient":{
+            "post":
+            {
+                "tags":["Admin Calls"],
+                "summary": "Consult profile client",
+                "description":"Call responsible for listing the customer profile",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "header",
+                    "name":"TOKEN_USER",
+                    "description": "Bearer Token",
+                    "required": true
+                },
+                {
+                    "in": "body",
+                    "name":"userData",
+                    "description": false,
+                    "required": true,
+                    "properties":
+                    {
+                        "emailClient":{"type":"string"}
+                    }              
+                }
+            ]
+        },
+        "/admin/editclientprofile":{
+            "post":
+            {
+                "tags":["Admin Calls"],
+                "summary": "Edit profile client",
+                "description":"Call responsible for edit the customer profile",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "header",
+                    "name":"TOKEN_USER",
+                    "description": "Bearer Token",
+                    "required": true
+                },
+                {
+                    "in": "body",
+                    "name":"userData",
+                    "description": false,
+                    "required": true,
+                    "properties":
+                    {
+                        "email":{"type":"string"}
+                    }              
+                }
+            ]
+        },
+        "/admin/deleteclient/:emailclient":{
+            "delete":
+            {
+                "tags":["Admin Calls"],
+                "summary": "Delete client",
+                "description":"Call responsible for delete the customer profile",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "header",
+                    "name":"TOKEN_USER",
+                    "description": "Bearer Token",
+                    "required": true
+                }
+            ]
+        },
+        "/admin/editacamera":{
+            "post":
+            {
+                "tags":["Admin Calls"],
+                "summary": "Edit camera client",
+                "description":"Responsible route to edit the cameras within the ADMIN, CLIENT and WOWZA documents",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "header",
+                    "name":"TOKEN_USER",
+                    "description": "Bearer Token",
+                    "required": true
+                },
+                {
+                    "in": "body",
+                    "name":"userData",
+                    "description": false,
+                    "required": true,
+                    "properties":
+                    {
+                        "emailClient":{"type":"string"},
+                        "emailAdmin":{"type":"string"},
+                        "descricao":{"type":"string"},
+                        "RTSP":{"type":"string"},
+                        "nomeCamera":{"type":"string"}
+                    }              
+                }
+            ]
+        },
+        "/admin/deletecam":{
+            "post":
+            {
+                "tags":["Admin Calls"],
+                "summary": "Edit camera client",
+                "description":"Route responsible for deleting customer's camera",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "header",
+                    "name":"TOKEN_USER",
+                    "description": "Bearer Token",
+                    "required": true
+                },
+                {
+                    "in": "body",
+                    "name":"userData",
+                    "description": false,
+                    "required": true,
+                    "properties":
+                    {
+                        "emailClient":{"type":"string"},
+                        "emailAdmin":{"type":"string"},
+                        "nomeCamera":{"type":"string"}
+                    }              
+                }
+            ]
+        },
+        "/admin/addgrupo":{
+            "post":
+            {
+                "tags":["Admin Calls"],
+                "summary": "Add group",
+                "description":"Route responsible for creating a group to insert customers and cameras",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "header",
+                    "name":"TOKEN_USER",
+                    "description": "Bearer Token",
+                    "required": true
+                },
+                {
+                    "in": "body",
+                    "name":"userData",
+                    "description": false,
+                    "required": true,
+                    "properties":
+                    {
+                        "nomeGrupo":{"type":"string"},
+                        "cameras":{"type":"string"},
+                        "emailAdmin":{"type":"string"},
+                        "emailClients":{"type":"string"}
+                    }              
+                }
+            ]
+        },
+        "/auth/addgrupo":{
+            "post":
+            {
+                "tags":["Auth Calls"],
+                "summary": "Login",
+                "description":"Route responsible for receiving user login and generating the access token",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "body",
+                    "name":"userData",
+                    "description": false,
+                    "required": true,
+                    "properties":
+                    {
+                        "email":{"type":"string"},
+                        "password":{"type":"string"}
+                    }              
+                }
+            ]
+        },
+        "/auth/verifytoken":{
+            "get":
+            {
+                "tags":["Auth Calls"],
+                "summary": "Verify Token",
+                "description":"Route responsible for receiving user login and generating the access token",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "header",
+                    "name":"TOKEN_USER",
+                    "description": "Bearer Token",
+                    "required": true
+                }
+            ]
+        },
+        "/auth/verification":{
+            "get":
+            {
+                "tags":["Auth Calls"],
+                "summary": "API online",
+                "description":"API verification is online",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "header",
+                    "name":"TOKEN_USER",
+                    "description": "Bearer Token",
+                    "required": true
+                }
+            ]
+        },
+        "/client/minhacam/:emailclient":{
+            "get":
+            {
+                "tags":["Client Calls"],
+                "summary": "My cameras",
+                "description":"Route responsible for receiving user login and generating the access token",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "header",
+                    "name":"TOKEN_USER",
+                    "description": "Bearer Token",
+                    "required": true           
+                }
+            ]
+        },
+        "/client/insertordemcam":{
+            "post":
+            {
+                "tags":["Client Calls"],
+                "summary": "Insert ordem cameras",
+                "description":"Route responsible for entering cameras order",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "header",
+                    "name":"TOKEN_USER",
+                    "description": "Bearer Token",
+                    "required": true
+                },
+                {
+                    "in": "body",
+                    "name":"userData",
+                    "description": false,
+                    "required": true,
+                    "properties":
+                    {
+                        "ordemCameras":{"type":"string"},
+                        "emailClient":{"type":"string"}
+                    }              
+                }
+            ]
+        },
+        "/client/findordercam/:email":{
+            "get":
+            {
+                "tags":["Client Calls"],
+                "summary": "Insert ordem cameras",
+                "description":"Route responsible for entering cameras order",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "header",
+                    "name":"TOKEN_USER",
+                    "description": "Bearer Token",
+                    "required": true
+                }
+            ]
+        },
+        "/client/minhacam/:email":{
+            "get":
+            {
+                "tags":["Client Calls"],
+                "summary": "Find ordem cameras",
+                "description":"Route responsible for sending cameras order",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "header",
+                    "name":"TOKEN_USER",
+                    "description": "Bearer Token",
+                    "required": true           
+                }
+            ]
+        },
+        "/client/insertordemgroup":{
+            "post":
+            {
+                "tags":["Client Calls"],
+                "summary": "Insert ordem Group",
+                "description":"Route responsible for insert cameras order",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "header",
+                    "name":"TOKEN_USER",
+                    "description": "Bearer Token",
+                    "required": true
+                },
+                {
+                    "in": "body",
+                    "name":"userData",
+                    "description": false,
+                    "required": true,
+                    "properties":
+                    {
+                        "ordemCameras":{"type":"string"},
+                        "emailClient":{"type":"string"},
+                        "nameGroup":{"type":"string"}
+                    }              
+                }
+            ]
+        },
+        "/master/register":{
+            "post":
+            {
+                "tags":["Master Calls"],
+                "summary": "Register master",
+                "description":"Route responsible for insert new user master",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "header",
+                    "name":"TOKEN_USER",
+                    "description": "Bearer Token",
+                    "required": true
+                },
+                {
+                    "in": "body",
+                    "name":"userData",
+                    "description": false,
+                    "required": true,
+                    "properties":
+                    {
+                        "razaosocial":{"type":"string"},
+                        "CNPJouCPF":{"type":"integer"},
+                        "email":{"type":"string"},
+                        "nome:":{"type":"string"},
+                        "sobreNome":{"type":"string"},
+                        "endereco":{"type":"string"},
+                        "cidade":{"type":"string"},
+                        "estado":{"type":"string"},
+                        "cep":{"type":"integer"},
+                        "plano":{"type":"string"},
+                        "password":{"type":"string"},
+                        "usellevel":{"type":"string"}
+                    }              
+                }
+            ]
+        },
+        "/master/listclients":{
+            "get":
+            {
+                "tags":["Master Calls"],
+                "summary": "List clients",
+                "description":"Route responsible for list clients",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "header",
+                    "name":"TOKEN_USER",
+                    "description": "Bearer Token",
+                    "required": true
+                }
+            ]
+        },
+        "/master/listadmin":{
+            "get":
+            {
+                "tags":["Master Calls"],
+                "summary": "List admin",
+                "description":"Route responsible for list admins",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "header",
+                    "name":"TOKEN_USER",
+                    "description": "Bearer Token",
+                    "required": true
+                }
+            ]
+        },
+        "/master/profileadmin/:email":{
+            "get":
+            {
+                "tags":["Master Calls"],
+                "summary": "List profile admin",
+                "description":"Route responsible for listing the admin profile",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "header",
+                    "name":"TOKEN_USER",
+                    "description": "Bearer Token",
+                    "required": true
+                }
+            ]
+        },
+        "/master/editadminprofile":{
+            "post":
+            {
+                "tags":["Master Calls"],
+                "summary": "Edit admin profile",
+                "description":"Route responsible for insert new user master",
+                "responses":
+                {
+                    "200":{"description":"authorized"},
+                    "401":{"description":"not authorized"}
+                }
+            },
+            "parameters":
+            [
+                {
+                    "in": "header",
+                    "name":"TOKEN_USER",
+                    "description": "Bearer Token",
+                    "required": true
+                },
+                {
+                    "in": "body",
+                    "name":"userData",
+                    "description": false,
+                    "required": true,
+                    "properties":
+                    {
+                        "razaosocial":{"type":"string"},
+                        "CNPJouCPF":{"type":"integer"},
+                        "email":{"type":"string"},
+                        "nome:":{"type":"string"},
+                        "sobreNome":{"type":"string"},
+                        "endereco":{"type":"string"},
+                        "cidade":{"type":"string"},
+                        "estado":{"type":"string"},
+                        "cep":{"type":"integer"},
+                        "plano":{"type":"string"},
+                        "password":{"type":"string"},
+                        "usellevel":{"type":"string"}
+                    }              
+                }
+            ]
+        }
+
+
+
+
+
+
+
+    }
+}
